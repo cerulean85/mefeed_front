@@ -1,0 +1,728 @@
+@import '~/assets/scss/_variables.scss';
+@import url($font_noto-sans);
+
+
+.about {
+  font-family: 'Noto Sans KR', sans-serif;  
+}
+
+.list {
+
+  margin-top: 32px; 
+  padding: 0px 24px 0px 24px;
+  height: 100%;
+  
+
+  .scroll-container {
+    height: 80vh;
+    overflow-y: scroll;  
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+
+  .text {
+    width: 75%;
+    padding: 0px 24px 0px 24px;
+    font-family: 'Noto Sans KR', sans-serif;  
+    color: $theme-color-font-main;
+    padding-top: 12px;
+
+    .title {      
+      font-weight: 600;
+      font-size: 18px;      
+      max-width: 92%;
+      white-space: nowrap; /* 텍스트가 줄 바꿈하지 않도록 설정 */
+      overflow: hidden; /* 넘치는 부분을 숨기기 */
+      text-overflow: ellipsis; /* 넘치는 부분에 생략 부호(...) 추가 */
+      // background-color: aqua;
+    }
+
+    .title:hover {
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .contents {      
+      font-weight: 400;
+      font-size: 16px;
+      max-width: 92%;
+      
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* 원하는 줄 수를 지정 */
+      -webkit-box-orient: vertical;
+    }
+
+    .contents:hover {
+      color:#999999;
+      cursor: pointer;
+    }
+
+    .author, .date {            
+      font-family: 'Noto Sans KR', sans-serif;  
+      font-weight: 400;
+      font-size: 12px;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-top: 8px;
+      color: $theme-color-font-sub
+      // background-color: aquamarine;
+    }
+  }
+
+  .thumbnail-img {
+    width: 20%;
+    max-width: 240px;
+    min-width: 180px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .row {
+    margin-top: 24px
+  }
+
+  .layout {
+    display: flex;
+  }
+  
+  .option {
+  display: flex; /* 나란히 배치하기 위해 플렉스박스 사용 */
+
+  }
+
+  .write {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    font-family: 'Noto Sans KR', sans-serif;    
+    font-weight: 400;
+    color: #333333;
+  }
+  
+  .count {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    font-family: 'Noto Sans KR', sans-serif;    
+    font-weight: 400;
+    color: #333333;
+  }
+
+  .search-box {
+    font-family: 'Noto Sans KR', sans-serif;  
+    padding-left: 12px;
+    font-size: 12px;
+  }
+  .search-button {
+    font-family: 'Noto Sans KR', sans-serif;    
+    width: 80px;
+    margin-left: 4px;
+  }
+  
+  .line {
+    border: 0; /* 기존 테두리 속성 초기화 */
+    border-top: 1px solid #eeeeee;
+  }  
+}
+
+.loading-indicator {            
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+}
+
+.article {
+
+  margin-top: 16px; 
+  padding: 0px 24px 0px 24px;
+  font-family: 'Noto Sans KR', sans-serif;  
+  color: $theme-color-font-main;
+
+  height: 62vh;
+  overflow-y: scroll;  
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  .title {      
+    font-weight: 600;
+    font-size: 24px;      
+    white-space: nowrap; /* 텍스트가 줄 바꿈하지 않도록 설정 */
+    overflow: hidden; /* 넘치는 부분을 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 부분에 생략 부호(...) 추가 */
+    text-align: center;
+  }
+
+  .text {      
+    font-weight: 400;
+    font-size: 16px;      
+    overflow: hidden;
+    overflow-wrap: break-word;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+
+  .image-box {
+    text-align: center;
+    .attr {
+      width: 80%;
+      max-width: 600px;
+      min-width: 240px;
+      
+    }
+  }
+
+  .author, .date {            
+    font-family: 'Noto Sans KR', sans-serif;  
+    font-weight: 400;
+    font-size: 12px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 8px;
+    color: $theme-color-font-sub;
+    text-align: right;
+    margin-bottom:24px;
+    // background-color: aquamarine;
+  }
+  
+  .line {
+    border: 0; /* 기존 테두리 속성 초기화 */
+    border-top: 1px solid #eeeeee;
+  }  
+}
+
+.modal-base {
+  position: fixed;
+  z-index: 999;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  /* margin-left: -150px; */
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.editor {
+  font-family: 'Noto Sans KR', sans-serif;  
+  // background-color: #333333;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 24px;
+
+  input.title {
+    font-family: 'Noto Sans KR', sans-serif;  
+    font-size: 16px;
+    width: 96%;
+    height: 16px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    // margin-left: 10%;
+  }
+  
+  textarea.content {
+    font-family: 'Noto Sans KR', sans-serif;  
+    width: 96%;
+    height: 200px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* 사용자가 크기 조정하지 못하도록 설정 */
+    font-size: 16px;
+    outline: none; /* 기본 포커스 효과 제거 */
+  }
+
+  input:focus {
+    outline: none !important;
+    border-color: #007bff; /* 포커스되었을 때의 테두리 색상 변경 */
+  }
+
+  textarea:focus {
+    border-color: #007bff; /* 포커스되었을 때의 테두리 색상 변경 */
+  }
+}
+
+.modal-main {
+  width: 80%;
+  height: 80%;
+  background-color: #eeeeee;
+  border-radius: 10px;
+}
+
+/* input[type="file"]을 숨김 */
+input[type="file"] {
+  display: none;
+}
+
+/* 가상으로 만든 버튼의 스타일 지정 */
+.file-input-button {
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 14px;
+  background-color: $theme-color-main;
+  color: #fff;
+  // padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 72px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button {
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 14px;
+  background-color: $theme-color-main;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 72px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.write-button {
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 14px;
+  background-color: $theme-color-main;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 72px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-button {
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 14px;
+  background-color: $theme-color-main;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 72px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button {
+  font-family: 'Noto Sans KR', sans-serif;  
+  font-size: 14px;
+  background-color: $theme-color-sub;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 72px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.mefeed-div {
+
+  font-family: 'Noto Sans KR', sans-serif;  
+  
+  .header {
+    width: 100%;
+    height: 42px;
+    border-bottom: 1px solid #E6E6E9;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .feed-logo {
+      .feed-logo-button {
+        width: 28px;
+        height: 28px;
+      }
+      .feed-logo-label {
+        margin-left: 10px;
+        font-weight: 700;
+        font-size: 26px;
+      }
+    }
+
+    .feed-user-button {
+      width: 48px;
+      height: 48px;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: 10px;
+    }
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    // height: calc(100vh - 42px - 70px);
+
+    .feed-zone {
+      width: 280px;
+      height: 100%;
+      border-right: 1px solid #E6E6E9;
+      float: left;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .feed-search-zone {
+        width: 100%;
+        height: 44px;
+        margin-top: 10px;;
+        background-color: #E6E6E9;
+        border-radius: 5px;
+
+        .feed-search-button {
+          width: 36px;
+          height: 36px;
+          cursor: pointer;
+          float: right;
+          margin-top: 4px;    
+          margin-right: 4px;      
+          // padding-right: 20px;
+        }
+
+        .feed-search-input {
+          width: calc(100% - 56px);
+          height: 24px;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 14px;
+          padding-left: 12px;
+          border: none;          
+          margin-left: 8px;
+          margin-top: 10px;
+        }
+      }
+
+      .feed-list-zone {
+        height: calc(100% - 60px);
+        overflow-y: scroll;  
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+
+    
+        .feed-item-layout {
+          display: flex;
+          // justify-content: center;
+          align-items: center;
+          margin-top: 10px;
+          padding: 10px;
+          border-radius: 5px;
+          background-color: #E6E6E9;
+          cursor: pointer;
+
+          .feed-elements {
+            width: calc(100% - 30px);
+            height: 100%;
+            margin-right: 10px;            
+            cursor: pointer;
+
+            .title {
+              font-size: 16px;
+              font-weight: 700;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 1; /* 원하는 줄 수를 지정 */
+              -webkit-box-orient: vertical;
+              cursor: pointer;
+            }
+
+            .contents {
+              font-size: 14px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 1; /* 원하는 줄 수를 지정 */
+              -webkit-box-orient: vertical;
+              cursor: pointer;
+            }
+
+            .date {
+              font-size: 13px;
+              color: #777777;
+              cursor: pointer;
+            }
+          }
+
+          .feed-thumbnail {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .feed-list-zone::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+    }
+  
+    .user-zone {
+      width: calc((100% - 280px) / 2);
+      height: 100%;
+      border-right: 1px solid #E6E6E9;
+      // float: left;
+      resize: horizontal; /* Enable horizontal resizing */
+
+      .user-control-zone {
+        width: 100%;
+        height: 44px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+
+        .user-remove-feed-button {
+          width: 28px;
+          height: 28px;
+          cursor: pointer;
+        }
+
+        .user-add-image-button {
+          width: 28px;
+          height: 28px;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+
+        .user-add-feed-button {
+          width: 28px;
+          height: 28px;
+          margin-left: auto;
+          margin-right: 20px;
+          cursor: pointer;
+        }
+      }
+
+      .user-typing-zone {
+        font-family: 'Noto Sans KR', sans-serif;
+        height: calc(100% - 44px);
+        .user-typing-title {
+          width: calc(100% - 30px);
+          height: 20px;
+          margin-top: 10px;
+          margin-left: 10px;
+          .title {
+            width: 100%;
+            font-size: 24px;
+            font-weight: 700;
+            border: 0px;
+            outline: none; /* 기본 포커스 효과 제거 */
+          }
+        }
+
+        .user-typing-contents {
+          width: calc(100% - 30px);
+          height: calc(100% - 94px);
+          background-color: white;
+          margin-top: 20px;
+          margin-left: 10px;
+          overflow-y: scroll;  
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+
+          .content {
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 100%;
+            // height: 100%;
+            // font-size: 18px;
+            border: 0px;
+            padding: 10px;
+            resize: none; /* 사용자가 크기 조정하지 못하도록 설정 */
+            font-size: 16px;
+            outline: none; /* 기본 포커스 효과 제거 */
+            overflow-y: hidden;
+          }
+
+          .image {
+            width: 70%;
+            max-width: 500px;
+          }
+        }
+
+        .user-typing-contents::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera*/
+        }
+
+      }
+    }
+
+    .zone-divider {
+      background-color: #CCCCCC  ; /* Red divider */
+      cursor: ew-resize;
+      width: 5px; /* Divider width */
+      height: 100vh;
+    }
+
+    .bot-zone {
+      width: calc((100% - 280px) / 2);
+      height: 100%;
+      // float: left;
+      background-color: #E6E6E9;
+      flex-grow: 1; /* Take up the remaining width */
+      overflow: auto; /* Scroll bars if content is large */
+
+      .bot-monit-zone {
+        width: 100%;
+        height: 120px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border-bottom: 1px solid #E6E6E9;
+
+        .bot-thumbnail {
+          width: 72px;
+          height: 72px;
+          border-radius: 50px;
+        }
+
+        .bot-rechat-button {
+          width: 36px;
+          height: 36px;
+          margin-left: auto;
+          cursor: pointer;
+        }
+
+        .bot-label {
+          font-family: 'Noto Sans KR', sans-serif;
+          width: calc(100% - 260px);
+          padding: 20px;
+          white-space: nowrap; /* 텍스트가 줄 바꿈하지 않도록 설정 */
+          overflow: hidden; /* 넘치는 부분을 숨기기 */
+          text-overflow: ellipsis; /* 넘치는 부분에 생략 부호(...) 추가 */
+        }
+      }
+
+      .bot-type_select {
+        font-size: 8px;
+
+        .bot-selected-img {
+          width: 30px; 
+          margin-right: 10px; 
+          font-size: 12px;
+        }
+
+        .bot-selected-lb {
+          font-size: 12px;
+          margin-right: 8px;
+        }
+
+        .bot-dropdown {
+          padding-top: 10px;
+
+          li {
+            font-size: 12px;
+            margin-left: 8px;
+            margin-right: 8px;
+            cursor: pointer;
+          }
+
+          img {
+            width: 30px; 
+            margin-right: 10px; 
+          }
+        }
+      }
+
+      .bot-challenge-zone {
+        width: 100%;
+        height: calc(100% - 140px);
+        overflow-y: scroll;  
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        padding: 20px;
+
+        .bot-challege-item {
+          width: 100%;
+          background-color: white;
+          margin-bottom: 50px;
+          border-radius: 5px;
+          padding: 10px;
+
+          .challenge-text {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #2C3E50;
+          }
+
+          .title {
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 100%;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+          }
+
+          .content {
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 100%;
+            font-size: 18px;
+            margin-bottom: 10px;
+            overflow-wrap: break-word;
+          }
+        }
+      }
+    
+      .bot-challenge-zone::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+    }
+  }
+}
+
+
+
+.feed-editor-textarea {
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    border: 0px;
+    padding: 10px;
+    resize: none; /* 사용자가 크기 조정하지 못하도록 설정 */
+    font-size: 16px;
+    outline: none; /* 기본 포커스 효과 제거 */    
+}
+
+.material-icons-outlined.md-18 { font-size: 18px; }
+.material-icons-outlined.md-24 { font-size: 24px; }
+.material-icons-outlined.md-28 { font-size: 28px; }
+.material-icons-outlined.md-32 { font-size: 32px; }
+.material-icons-outlined.md-36 { font-size: 36px; }
+.material-icons-outlined.md-44 { font-size: 44px; }
+.material-icons-outlined.md-48 { font-size: 48px; }
+.material-icons-outlined.md-light { color: rgba(255, 255, 255, 1); }

@@ -1,0 +1,49 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
+    "nuxt": "^3.9.1",
+    "vue": "^3.4.10",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@popperjs/core": "^2.11.8",
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1",
+    "sass": "^1.69.7",
+    "vite": "^5.0.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended",
+      "@vue/typescript/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
+        }
+      ]
+    }
+  }
+}
