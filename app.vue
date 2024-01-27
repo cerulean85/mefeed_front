@@ -44,7 +44,7 @@
       </div>
     </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-if="showPlayBed">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-if="showPlayBed">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">PlayBed</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> -->
 
     <main>
       <NuxtPage />
@@ -80,6 +80,8 @@
 </template>
 
 <script setup lang="ts">
+
+
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
@@ -96,9 +98,12 @@ interface ColorStyle {
   color: string;
 }
 
+// import {mapMutations} from "vuex"
+// console.log(this.$sotre.state.pages);
+
 const meFeedCategories = ref([
   { id: 0, name: "About", to: "/about", selected: false },
-  // { id: 1, name: "Articles", to: "/article_list", selected: false },
+  { id: 1, name: "RSS", to: "/rss", selected: false },
   // { id: 2, name: "MeFeed", to: "/mefeed", selected: true },
   // { id: 3, name: "BedLots", to: "/bed/lots", selected: false },
   // { id: 4, name: "BedFavorite", to: "/bed/favorite", selected: false },
@@ -133,4 +138,25 @@ const router = useRouter();
 // router.push("/");
 // router.push('/game/lots');
 // router.push("/bed/lots");
+
+// const num = 55666;
+// // const counter = useState('counter', () => num);
+
+// const categories = useState("categories", () => meFeedCategories);
+
+
+
+// import { useCounterStore } from './stores/counterStore'
+// const counter = useCounterStore();
+
+// console.log(useCounterStore)
+// console.log(useCounterStore)
+// console.log(useCounterStore)
+// console.log(useCounterStore)
+// console.log(useCounterStore)
+
+// alert(useCounterStore.doubleCount)
+// const counter = useCounterStore();
+
+
 </script>

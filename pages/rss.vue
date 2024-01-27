@@ -1,12 +1,13 @@
 <template>
-  <MeFeedViewerComplex></MeFeedViewerComplex>
+  <MeFeedRSSComplex></MeFeedRSSComplex>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import MeFeedViewerComplex from '../components/MeFeedViewerComplex.vue';
+import MeFeedRSSComplex from "../components/MeFeedRSSComplex.vue";
 
 onMounted(() => {
+
 
 });
 

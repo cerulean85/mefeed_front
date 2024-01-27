@@ -13,6 +13,13 @@ export interface Feed {
   thumbnail: string;
   feedback: any;
   inventory: any;
+
+  // Use at RSS
+  idx: string;
+  link: string; 
+  logo: string;
+  name: string;
+  feedCount: number;
 }
 
 export function getNewFeed(): Feed {
@@ -29,8 +36,16 @@ export function getNewFeed(): Feed {
     thumbnail: "",
     feedback: ref([]),
     inventory: [],
+
+    // use at RSS
+    idx: "",
+    link: "",
+    logo: "",
+    name: "",
+    feedCount: 0
   };
 }
+
 export function getNewFeedList(): Feed[] {
   return [];
 }
@@ -52,6 +67,13 @@ export function clearFeed(feed: Feed) {
     inven.contents = "";
   }
   curFeed.inventory.splice(0, curFeed.inventory.length);
+
+  // Use at RSS
+  curFeed.logo = "";
+  curFeed.idx = "";
+  curFeed.link = "";
+  curFeed.name = "";
+  curFeed.feedCount = 0;
 }
 
 export class FeedList {
