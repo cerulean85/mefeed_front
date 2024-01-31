@@ -104,6 +104,7 @@ interface ColorStyle {
 const meFeedCategories = ref([
   { id: 0, name: "About", to: "/about", selected: false },
   { id: 1, name: "RSS", to: "/rss", selected: false },
+  { id: 2, name: "Gallery", to: "/gallery", selected: false },
   // { id: 2, name: "MeFeed", to: "/mefeed", selected: true },
   // { id: 3, name: "BedLots", to: "/bed/lots", selected: false },
   // { id: 4, name: "BedFavorite", to: "/bed/favorite", selected: false },
@@ -131,6 +132,16 @@ function changeMainMenuColor(category: Category): ColorStyle {
 onMounted(() => {
   // changeMainMenuColor(meFeedCategories.value[0]);
   // selectMainMenu(2);
+
+  // 선택한 메뉴 버튼 활성화 되도록 조치
+  const tmp = window.location.href.split('/');
+  if(tmp.length > 0) {
+    for (const cate of meFeedCategories.value) {
+        cate.selected = (cate.name.toLowerCase() === tmp[tmp.length - 1]);
+    }
+  }
+    
+  console.log(window.location.href)
 });
 
 const router = useRouter();

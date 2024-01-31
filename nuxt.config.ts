@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
+  // ... other options
+  modules: [
+    // ...
+    '@pinia/nuxt',
+  ],
   css: [
     "~/assets/scss/main.scss", 
     "~/assets/scss/contents.scss",    
@@ -9,6 +14,9 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
+      charset: 'utf-8',
+      viewport: 'width=500, initial-scale=1',
+      title: 'MeFeed',
       link: [
         {
           href:"https://fonts.googleapis.com/icon?family=Material+Icons+Outlined", 

@@ -7,7 +7,7 @@
     <div class="scroll-container">
       <div style="margin-bottom: 18px; margin-left: 12px; font-size:14px; color:gray">Updated: 2024-01-13</div>
       <ul>
-        <h4>1. MeFeed의 기능 {{ counter }}</h4>
+        <h4>1. MeFeed의 기능 {{ store.selectedCategory }}</h4>
         <li>MeFeed는 사용자가 보다 수준 높은 글을 작성할 수 있도록 생성형 AI의 Feedback을 지원합니다.</li>
         <li>MeFeed는 사용자가 글을 작성하고 이미지를 업로드하고, 검색하는 기능을 제공합니다.</li>
         <li>MeFeed는 Open API를 이용하여 OpenAI의 ChatGPT와 Google의 Gemini의 API를 이용하여 상호작용합니다.</li>
@@ -33,11 +33,20 @@
 <script setup lang="ts">
 
 import { ref, onMounted } from "vue";
+import { useSelectedCategory } from "../stores/counterStore"
+
+const store = useSelectedCategory();
+store.selectedCategory = "about";
 
 onMounted(() => {
+  
+  console.log(store.selectedCategory)
+  console.log(store.selectedCategory)
+  console.log(store.selectedCategory)
+  console.log(store.selectedCategory)
   // alert("About")
-  const counter = useState('counter');
-const categories = useState('categories');
+//   const counter = useState('counter');
+// const categories = useState('categories');
 // categories.value[0]["selected"] = true;
 // console.debug(categories.value[0])
 

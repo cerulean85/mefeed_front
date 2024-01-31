@@ -1,4 +1,5 @@
-const apiServerUrl = "http://localhost:8082"; //"https://rest.kkennib.net";
+const apiServerUrl = "https://rest.kkennib.net";
+//const apiServerUrl = "http://localhost:8082";
 export async function fetchArticleAll(userId: string, pageNo: number) {
   const data = await $fetch(`${apiServerUrl}/articles/${userId}/${pageNo}`);
   return data;
@@ -51,53 +52,9 @@ export async function fetchSearchMedia(searchText: string) {
     () => $fetch(`${apiServerUrl}/rss/media/${searchText}`)
   )
   return data.value;
+}
 
-  // return {
-  //   list: [
-  //     {
-  //       "no": 1,
-  //       "mediaId": "rss-maekyung",
-  //       "title": "매일경제",
-  //       "logo": "/img/logo_maekyung.jpg",
-  //       "updatedAt": "2024.1.20.",
-  //       "feedback": [],
-  //       "inventory": [
-  //         {
-  //           "no": 1,
-  //           "title": "(11 / MK) 테스트 글의 제목입니다.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  //           "contents": "(11 / MK) 테스트 글의 내용입니다.",
-  //           "link": "(11 / MK) 테스트 글의 링크입니다."
-  //         },
-  //         {
-  //           "no": 2,
-  //           "title": "(22 / MK) 테스트 글의 제목입니다.",
-  //           "contents": "(22 / MK) 테스트 글의 내용입니다.",
-  //           "link": "(22 / MK) 테스트 글의 링크입니다."
-  //         }
-  //       ]
-  //     },
-  //     {
-  //       "no": 2,
-  //       "mediaId": "rss-jtbc",
-  //       "title": "JTBC",
-  //       "logo": "/img/logo_jtbc.webp",
-  //       "updatedAt": "2024.1.20.",
-  //       "feedback": [],
-  //       "inventory": [
-  //         {
-  //           "no": 1,
-  //           "title": "(11 / JTBC) 테스트 글의 제목입니다.",
-  //           "contents": "(11 / JTBC) 테스트 글의 내용입니다.",
-  //           "link": "(11 / JTBC) 테스트 글의 링크입니다."
-  //         },
-  //         {
-  //           "no": 2,
-  //           "title": "(22 / JTBC) 테스트 글의 제목입니다.",
-  //           "contents": "(22 / JTBC) 테스트 글의 내용입니다.",
-  //           "link": "(22 / JTBC) 테스트 글의 링크입니다."
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
+export async function fetchBotArtAll() {
+  const data = await $fetch(`${apiServerUrl}/bot/art/all`);
+  return data;
 }
