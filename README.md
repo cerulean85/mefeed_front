@@ -1,76 +1,17 @@
-# Nuxt 3 Minimal Starter
+# Welcome!
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<hr>
 
-## Setup
+**깬닙 블로그 목적** 
+- 사이드 블로그에 포스팅한 글 중 좋은 글을 발췌하여 올리기
+- 흥미로운 프레임워크나 기술을 적용해보기
 
-Make sure to install the dependencies:
+<hr>
 
-```bash
-# npm
-npm install
+**깬닙 블로그 목표**
+- 이 블로그는 창조가 아닌 '진화'를 지향합니다.
+- 그리하여 앞으로 이 블로그가 어떤 서비스로 변모할 지 아무도 모릅니다.
+- 다만, 우수한 '콘텐츠'와 질 높은 '서비스'를 추구할 뿐입니다.
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-# mefeed_front
+**현재**
+- 깬닙 블로그는 편집기와 AI 프롬프트를 개발중입니다. 
