@@ -2,10 +2,9 @@
 export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
-  // ... other options
   modules: [
-    // ...
     '@pinia/nuxt',
+    "nuxt-quasar-ui"
   ],
   css: [
     "~/assets/scss/main.scss", 
@@ -41,5 +40,6 @@ export default defineNuxtConfig({
         }
       ]
     }
-  }
+  },
+  quasar: { /* */ }
 })

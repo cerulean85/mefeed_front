@@ -1,173 +1,101 @@
 <template>
-  <div id="app" class="layout-app">
+  <div class="layout-app">
+    <q-layout view="hHh Lpr lff" container style="height: 100vh" class="shadow-2 ">
+      <q-header elevated class="sty-q-header" style="height: 48px;">
+        <q-toolbar>
+          <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+          <q-toolbar-title>MeFeed</q-toolbar-title>
+          <q-btn flat @click="drawer = !drawer" round dense icon="account_circle" />
+        </q-toolbar>
+      </q-header>
 
-    <!-- <header>
-      <div class="layout-title centered-content">
-        <div>Awesome Mate!</div>
-      </div>
-      <div class="layout-main-menu">
-        <div v-for="category in categories" :key="category.id">
-          <NuxtLink class="router-main-menu-button" 
-                      :to="category.to" :style="changeMainMenuColor(category)" 
-                      @click="selectMainMenu(category.id)">
-                      <div class="router-outer-inline-block">{{ category.name }}</div>
-          </NuxtLink>
-        </div>
-      </div>
-    </header> -->
+      <q-drawer
+        v-model="drawer"
+        show-if-above
+        :width="200"
+        :breakpoint="500"
+        overlay
+        :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
+      >
+        <q-scroll-area class="fit">
+          <q-list>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-if="showMeFeed">
-      <div class="container-fluid">
-        <NuxtLink class="navbar-brand fw-bold" to="/" @click="()=> {
-          meFeedCategories.forEach( e=> {
-            e.selected = false;
-          });
-        }">MeFeed</NuxtLink>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">          
-            <li class="nav-item" v-for="category in meFeedCategories" :key="category.id">
-              <NuxtLink class="nav-link" 
-              :class="{active: category.selected}" :to="category.to" 
-              @click="() => {
-                meFeedCategories.forEach( e => {
-                  e.selected = false
-                });
-                category.selected = true
-              }">{{ category.name }}</NuxtLink>
-            </li>
-          </ul>
-<!--          <span class="material-icons-outlined md-32 md-light">account_circle</span>-->
-        </div>        
-      </div>
-    </nav>
+            <template v-for="(menuItem, index) in menuList" :key="index">
+              <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple>
+                <q-item-section avatar>
+                  <q-icon :name="menuItem.icon" />
+                </q-item-section>
+                <q-item-section>
+                  <NuxtLink class="nav-link" :to="menuItem.to" >{{ menuItem.label }}</NuxtLink>
+                </q-item-section>
+              </q-item>
+              <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
+            </template>
 
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-if="showPlayBed">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">PlayBed</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">          
-            <li class="nav-item" v-for="category in bedCategories" :key="category.id">
-              <NuxtLink class="nav-link" 
-              :class="{active: category.selected}" :to="category.to" 
-              @click="() => {
-                bedCategories.forEach( e => {
-                  e.selected = false
-                });
-                category.selected = true
-              }">{{ category.name }}</NuxtLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
+          </q-list>
+        </q-scroll-area>
+      </q-drawer>
 
-    <main>
-      <NuxtPage />
-    </main>
-
-    <!-- <footer>
-      <hr>
-      <p>&copy; 2023 Awesome Mate. All rights reserved. Designed by kkennib.</p>
-    </footer> -->
-
+      <q-page-container>
+        <q-page>
+          <NuxtPage />
+          <!-- <p v-for="n in 30" :key="n">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci, dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus commodi perferendis voluptate?
+          </p> -->
+        </q-page>
+      </q-page-container>
+    </q-layout>
   </div>
 </template>
 
-<script setup lang="ts">
+<script>
+import { ref } from 'vue'
 
+const menuList = [
+  {
+    icon: 'inbox',
+    label: 'About',
+    separator: false,
+    to: '/about'
+  },
+  {
+    icon: 'feed',
+    label: 'Feed',
+    separator: false,
+    to: '/'
+  },
+  {
+    icon: 'send',
+    label: 'RSS',
+    separator: false,
+    to: '/rss'
+  },
+  {
+    icon: 'photo_library',
+    label: 'Gallery',
+    separator: false,
+    to: '/gallery'
+  },
+  {
+    icon: 'science',
+    label: 'Playground',
+    separator: true,
+    to: '/playground'
+  },
+  {
+    icon: 'science',
+    label: 'Lab',
+    separator: true,
+    to: '/lab'
+  }
+]
 
-import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
-
-const showMeFeed: any = ref(true);
-const showPlayBed: any = ref(false);
-
-interface Category {
-  id: number;
-  name: string;
-  selected: boolean;
-}
-
-interface ColorStyle {
-  color: string;
-}
-
-// import {mapMutations} from "vuex"
-// console.log(this.$sotre.state.pages);
-
-const meFeedCategories = ref([
-  { id: 0, name: "About", to: "/about", selected: false },
-  { id: 1, name: "RSS", to: "/rss", selected: false },
-  { id: 2, name: "Gallery", to: "/gallery", selected: false },
-  // { id: 2, name: "MeFeed", to: "/mefeed", selected: true },
-  // { id: 3, name: "BedLots", to: "/bed/lots", selected: false },
-  // { id: 4, name: "BedFavorite", to: "/bed/favorite", selected: false },
-  // { id: 1, name: "Release", to: "/release", selected: false },
-]);
-
-const bedCategories = ref([
-  { id: 1, name: "제비뽑기", to: "/bed/lots", selected: true },
-  { id: 2, name: "유용한 사이트", to: "/bed/favorite", selected: false },
-  // { id: 1, name: "Release", to: "/release", selected: false },
-]);
-
-function selectMainMenu(categoryId: number): void {
-  meFeedCategories.value.forEach((e) => {
-    e.selected = e.id == categoryId ? true : false;
-  });
-}
-
-function changeMainMenuColor(category: Category): ColorStyle {
-  return {
-    color: category.selected ? "black" : "#f5f5f5",
-  };
-}
-
-onMounted(() => {
-  // changeMainMenuColor(meFeedCategories.value[0]);
-  // selectMainMenu(2);
-
-  // 선택한 메뉴 버튼 활성화 되도록 조치
-  const tmp = window.location.href.split('/');
-  if(tmp.length > 0) {
-    for (const cate of meFeedCategories.value) {
-        cate.selected = (cate.name.toLowerCase() === tmp[tmp.length - 1]);
+export default {
+  setup () {
+    return {
+      drawer: ref(false),
+      menuList
     }
   }
-    
-  console.log(window.location.href)
-});
-
-const router = useRouter();
-// router.push("/about");
-// router.push("/");
-// router.push('/game/lots');
-// router.push("/bed/lots");
-
-// const num = 55666;
-// // const counter = useState('counter', () => num);
-
-// const categories = useState("categories", () => meFeedCategories);
-
-
-
-// import { useCounterStore } from './stores/counterStore'
-// const counter = useCounterStore();
-
-// console.log(useCounterStore)
-// console.log(useCounterStore)
-// console.log(useCounterStore)
-// console.log(useCounterStore)
-// console.log(useCounterStore)
-
-// alert(useCounterStore.doubleCount)
-// const counter = useCounterStore();
-
-
+}
 </script>

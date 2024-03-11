@@ -5,6 +5,14 @@ export async function fetchArticleAll(userId: string, pageNo: number) {
   return data;
 }
 
+export async function fetchGetArticle(userId: string, articleId: string) {
+  const { data, pending, error, refresh } = await useAsyncData(
+    'fetchSearchMedia',
+    () => $fetch(`${apiServerUrl}/article/${userId}/${articleId}`)
+  )
+  return data.value;
+}
+
 export async function fetchSearchArticle(userId: string, searchText: string, pageNo: number) {
   const { data, pending, error, refresh } = await useAsyncData(
     'fetchSearchArticle',
