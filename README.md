@@ -36,3 +36,12 @@
 - pm2 start ecosystem.config.cjs / pm2 start <AppName>
 - pm2 monit
 - pm2 delete <AppName>
+
+<hr>
+
+## 시스템 스펙 기록
+- Front-end: Vue.js + (SSR구현: Nuxt.js)
+- Back-end: SpringBoot (https://github.com/cerulean85/graphtype-springboot)
+- Cloud: AWS EC2 등등
+- DB: Postgre
+- AI: ChatGPT, Gemini API
